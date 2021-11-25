@@ -76,43 +76,43 @@ Dependent jars will be included in the main jar.
 
 # Super pom - Effect pom is by default the super pom 
 ## Pom inheritance
-	1. Dependency management
-		1. For maven to manage all the jars from parent pom, we have add <dependencyManagement> section in parent pom.
-		2. The child module should have <parent> tag and parents maven coordinates in it for this to work.
-		3. If no groupid and artifact id are declared in child pom, by default all jars from parent are available in child modules.
-		4. If child module needs a different version of jar than the parent pom, then the child pom should also declare the maven coordinates (groupid, artifactid & version) so that it can have its own version.
+	1. Dependency management  
+		1. For maven to manage all the jars from parent pom, we have add <dependencyManagement> section in parent pom.  
+		2. The child module should have <parent> tag and parents maven coordinates in it for this to work.  
+		3. If no groupid and artifact id are declared in child pom, by default all jars from parent are available in child modules.  
+		4. If child module needs a different version of jar than the parent pom, then the child pom should also declare the maven coordinates (groupid, artifactid & version) so that it can have its own version.  
 # Settings.xml
-	Windows--Preferences->userSettings
- To do Project Aggregation, you must do the following:
-	1. Change the parent POMs packaging to the value "pom" .
-	2.  Specify in the parent POM the directories of its modules (children POMs)
-	3. Include a dependency management element
-	4. Add parent tag in the child modules
-	5. Simply adding dependency in parent pom under dependency management will not add dependencies to child module by default. We should provide the dependeny in child module as well without version if we want to inherit the version from parent or with version if we want separate versions 
+	Windows--Preferences->userSettings  
+ To do Project Aggregation, you must do the following:  
+	1. Change the parent POMs packaging to the value "pom" .  
+	2.  Specify in the parent POM the directories of its modules (children POMs)  
+	3. Include a dependency management element  
+	4. Add parent tag in the child modules  
+	5. Simply adding dependency in parent pom under dependency management will not add dependencies to child module by default. We should provide the dependeny in child module as well without version if we want to inherit the version from parent or with version if we want separate versions   
 Note :  
-	1. If you have depedendencyManagement Tag in parent pom, then its mandatory to declare the dependencies (maven coordinates) in child pom as well, version can be optional. It is also mandatory to declare parent tag with parent maven coordinates in the child pom 
-	2. If you don't have dependency management tag in parent pom, all the dependencies declared in parent pom will be auto inherited to child pom even if the dependencies are not declared in child poms.
+	1. If you have depedendencyManagement Tag in parent pom, then its mandatory to declare the dependencies (maven coordinates) in child pom as well, version can be optional. It is also mandatory to declare parent tag with parent maven coordinates in the child pom  
+	2. If you don't have dependency management tag in parent pom, all the dependencies declared in parent pom will be auto inherited to child pom even if the dependencies are not declared in child poms.  
 	
 
 # Properties
-We can include properties under properties tag. 
+We can include properties under properties tag.   
 For Ex: 
-    1 	<properties>
-    2 	<java.compiler.version>1.8</java.compiler.version>
-    3 	</properties>
-The property can be retrieved by ${java.compiler.version}
+    1 	<properties>  
+    2 	<java.compiler.version>1.8</java.compiler.version>  
+    3 	</properties>  
+The property can be retrieved by ${java.compiler.version}  
 
 # Add Modules
-Click on pom.xml-->Overview-->Under modules click Add and select modules. 
-This will create modules in pom.xml
+Click on pom.xml-->Overview-->Under modules click Add and select modules.   
+This will create modules in pom.xml  
 
-Parent tag helps in achieving inheritance between poms
-Module tag helps in aggregation implicit child module builds when parent pom is built
+Parent tag helps in achieving inheritance between poms  
+Module tag helps in aggregation implicit child module builds when parent pom is built  
 
-And this is done by reactor.
+And this is done by reactor.  
 
 # Linking up External Repository
-	1. Add a <distributionManagement<snapshotrepository><id><url> Section in the pom.xml
-	2. Add a <servers><server><id><username><password> for authenticating the above url in distributionmanagement- in settings.xml, id here should match with snapshot/release #    repository id
-	3. Right click and run with maven goal --> deploy
-	4. The artifacts (snapshots.jar) will be uploaded to external repository
+	1. Add a <distributionManagement<snapshotrepository><id><url> Section in the pom.xml  
+	2. Add a <servers><server><id><username><password> for authenticating the above url in distributionmanagement- in settings.xml, id here should match with snapshot/release #    repository id  
+	3. Right click and run with maven goal --> deploy  
+	4. The artifacts (snapshots.jar) will be uploaded to external repository  
