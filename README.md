@@ -120,5 +120,5 @@ And this is done by reactor.
 test-compile is to compile classes in test source directory
 -Dexec.classpathScope="test" is important to execute this method successfully
 ```
-mvn test-compile exec:java -Dexec.mainClass="makemytrip.Main" -Dexec.classpathScope="test"
+mvn test-compile exec:java -Dexec.mainClass="com.test.makemytrip.MainClass" -Dexec.classpathScope="test"
 ```
