@@ -116,3 +116,9 @@ And this is done by reactor.
 	2. Add a <servers><server><id><username><password> for authenticating the above url in distributionmanagement- in settings.xml, id here should match with snapshot/release #    repository id  
 	3. Right click and run with maven goal --> deploy  
 	4. The artifacts (snapshots.jar) will be uploaded to external repository  
+# Execute a main method from test source directory
+test-compile is to compile classes in test source directory
+-Dexec.classpathScope="test" is important to execute this method successfully
+```
+mvn test-compile exec:java -Dexec.mainClass="makemytrip.Main" -Dexec.classpathScope="test"
+```
